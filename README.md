@@ -1,7 +1,7 @@
 # Purpose
 This project serves as experience for tackling more complex 
 projects in the future.
-The website can be accessed through LINK
+The website can be accessed through [HERE](https://strong-selkie-bc67a4.netlify.app)
 
 # Features
 Create, Read, Update, and Delete capabilities
