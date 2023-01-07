@@ -13,7 +13,7 @@ export const fetchAndGetLists = async () => {
 
 export const fetchAndGetList = async (listId) => {
   try {
-    const response = await fetch('http://localhost:8000/api/v1/list/'
+    const response = await fetch('https://mern-taskboard.onrender.com/api/v1/list/'
     + listId, {
       method: 'GET', 
       headers: { 'Content-type': 'application/json' },
@@ -41,7 +41,7 @@ export const fetchAndPostList = async (body) => {
 
 export const fetchAndPatchList = async (listId, body) => {
   try {
-    const response = await fetch('http://localhost:8000/api/v1/list/' 
+    const response = await fetch('https://mern-taskboard.onrender.com/api/v1/list/' 
     + listId, {
       method: 'PATCH',
       headers: { 'Content-type': 'application/json'},
