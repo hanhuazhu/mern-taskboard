@@ -1,8 +1,50 @@
+export const fetchAndGetLists = async () => {
+  try {
+    const response = await fetch('https://mern-taskboard.onrender.com/api/v1/list', {
+      method: 'GET', 
+      headers: { 'Content-type': 'application/json' },
+    });
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export const fetchAndGetList = async (listId) => {
+  try {
+    const response = await fetch('http://localhost:8000/api/v1/list/'
+    + listId, {
+      method: 'GET', 
+      headers: { 'Content-type': 'application/json' },
+    });
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export const fetchAndPostList = async (body) => {
   try {
     const response = await fetch('https://mern-taskboard.onrender.com/api/v1/list', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export const fetchAndPatchList = async (listId, body) => {
+  try {
+    const response = await fetch('http://localhost:8000/api/v1/list/' 
+    + listId, {
+      method: 'PATCH',
+      headers: { 'Content-type': 'application/json'},
       body: JSON.stringify(body),
     });
     const data = await response.json();

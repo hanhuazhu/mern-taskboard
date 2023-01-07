@@ -2,26 +2,14 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddList from '../components/AddList';
 import Menu from '../components/Menu';
+import { fetchAndGetLists } from '../utils/api';
 
 const Home = () => {
   const [lists, setLists] = useState([]);
   const [update, setUpdate] = useState(false);
 
-  const fetchLists = async () => {
-    try {
-      const response = await fetch('http://localhost:8000/api/v1/list', {
-        method: 'GET', 
-        headers: { 'Content-type': 'application/json' },
-      });
-      const data = await response.json();
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   useEffect(() => {
-    fetchLists().then((data) => setLists(data.allLists || []));
+    fetchAndGetLists().then((data) => setLists(data.allLists || []));
     setUpdate(false);
   }, [update]);
 

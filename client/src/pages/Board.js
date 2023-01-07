@@ -2,41 +2,16 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../components/Button';
 import List from '../components/List';
+import {
+  fetchAndGetList, 
+  fetchAndPatchList, 
+} from '../utils/api';
 
 const Board = () => {
   const query = new URLSearchParams(useLocation().search);
   const listId = query.get('id');
 
   const [title, setTitle] = useState('')
-
-  const fetchAndGetList = async (listId) => {
-    try {
-      const response = await fetch('http://localhost:8000/api/v1/list/'
-      + listId, {
-        method: 'GET', 
-        headers: { 'Content-type': 'application/json' },
-      });
-      const data = await response.json();
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  const fetchAndPatchList = async (listId, body) => {
-    try {
-      const response = await fetch('http://localhost:8000/api/v1/list/' 
-      + listId, {
-        method: 'PATCH',
-        headers: { 'Content-type': 'application/json'},
-        body: JSON.stringify(body),
-      });
-      const data = await response.json();
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  }
 
   const handleSubmit = () => {
     fetchAndPatchList(listId, {title: title})
